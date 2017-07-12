@@ -22,6 +22,6 @@ explore: data {
 
 }
 
-explore: rules {}
+explore: rules  {}
 
  explore: spend_by_supplier {}
