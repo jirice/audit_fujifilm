@@ -1831,10 +1831,10 @@ view: data {
 
     dimension: Category_Classification_Depth {
       type: string
-      sql: CASE WHEN  LEN(data."category_code") = 5  THEN 'Level 1'
-             WHEN LEN(data."category_code") = 8  THEN 'Level 2'
-             WHEN LEN(data."category_code") = 11  THEN 'Level 3'
-             WHEN LEN(data."category_code") = 14  THEN 'Level 4'
+      sql: CASE WHEN  LEN(data."category_code") = 2  THEN 'Level 1'
+             WHEN LEN(data."category_code") = 5  THEN 'Level 2'
+             WHEN LEN(data."category_code") = 8  THEN 'Level 3'
+             WHEN LEN(data."category_code") = 11  THEN 'Level 4'
              WHEN data."category_code" = ''  THEN 'Unclassified'
         ELSE  data."category_code"  END ;;
 

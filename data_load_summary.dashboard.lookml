@@ -71,7 +71,7 @@
     explore: data
     type: table
     fields:
-    - data.category_level_4
+    - data.category_level_3
     - data.total_spend
     - data.original_supplier_count
     - data.supplier_count
