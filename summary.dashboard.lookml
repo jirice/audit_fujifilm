@@ -3,6 +3,7 @@
   elements:
   - name: Spend by Month
     label: Spend by Month
+    title: Spend by Month
     model: fujifilm_audit
     explore: data
     type: looker_column
@@ -89,6 +90,7 @@
     height: 7
   - name: Spend by Category
     label: Spend by Category
+    title: Spend by Category
     model: fujifilm_audit
     explore: data
     type: looker_bar
@@ -131,6 +133,7 @@
     height: 6
   - name: Spend by Supplier - Top 10
     label: Spend by Supplier - Top 10
+    title: Spend by Supplier - Top 10
     model: fujifilm_audit
     explore: data
     type: looker_bar
@@ -190,6 +193,7 @@
     height: 6
   - name: Po Count - Single Value
     label: Po Count - Single Value
+    title: Po Count - Single Value
     model: fujifilm_audit
     explore: data
     type: single_value
@@ -235,6 +239,7 @@
     height: 2
   - name: Invoice Count - Single Value
     label: Invoice Count - Single Value
+    title: Invoice Count - Single Value
     model: fujifilm_audit
     explore: data
     type: single_value
@@ -280,6 +285,7 @@
     height: 2
   - name: Line count - Single Value
     label: Line count - Single Value
+    title: Line count - Single Value
     model: fujifilm_audit
     explore: data
     type: single_value
@@ -325,6 +331,7 @@
     height: 2
   - name: Dynamic Spend Metric
     label: Dynamic Spend Metric
+    title: Dynamic Spend Metric
     model: fujifilm_audit
     explore: data
     type: single_value
@@ -371,6 +378,7 @@
     height: 2
   - name: Supplier Parent Count
     label: Supplier Parent Count
+    title: Supplier Parent Count
     model: fujifilm_audit
     explore: data
     type: single_value
@@ -416,6 +424,7 @@
     height: 2
   - name: Total Spend Single Value
     label: Total Spend Single Value
+    title: Total Spend Single Value
     model: fujifilm_audit
     explore: data
     type: single_value
@@ -461,6 +470,7 @@
     height: 2
   - name: Buyer Chart
     label: Buyer Chart
+    title: Buyer Chart
     model: fujifilm_audit
     explore: data
     type: looker_pie
@@ -505,6 +515,7 @@
     height: 7
   - name: Plant Chart
     label: Plant Chart
+    title: Plant Chart
     model: fujifilm_audit
     explore: data
     type: looker_pie
@@ -549,6 +560,7 @@
     height: 7
   - name: Plant Table
     label: Plant Table
+    title: Plant Table
     model: fujifilm_audit
     explore: data
     type: table
@@ -602,6 +614,7 @@
     height: 8
   - name: Buyer Table
     label: Buyer Table
+    title: Buyer Table
     model: fujifilm_audit
     explore: data
     type: table

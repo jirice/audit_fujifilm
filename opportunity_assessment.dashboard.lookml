@@ -4,6 +4,7 @@
   elements:
   - name: Spend and Supplier Comparative Analysis
     label: Spend and Supplier Comparative Analysis
+    title: Spend and Supplier Comparative Analysis
     model: fujifilm_audit
     explore: data
     type: looker_column
@@ -65,6 +66,7 @@
     height: 7
   - name: Supplier Count and PO Count by Supplier Spend
     label: Supplier Count and PO Count by Supplier Spend
+    title: Supplier Count and PO Count by Supplier Spend
     model: fujifilm_audit
     explore: data
     type: looker_line
@@ -118,6 +120,7 @@
     height: 7
   - name: 80/20 Suppliers
     label: 80/20 Suppliers
+    title: 80/20 Suppliers
     model: fujifilm_audit
     explore: data
     type: table

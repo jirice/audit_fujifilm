@@ -3,6 +3,7 @@
   elements:
   - name: Time Validation
     label: Time Validation
+    title: Time Validation
     model: fujifilm_audit
     explore: data
     type: table
@@ -36,6 +37,7 @@
     height: 9
   - name: Top 10 Normalized Suppliers
     label: Top 10 Normalized Suppliers
+    title: Top 10 Normalized Suppliers
     model: fujifilm_audit
     explore: data
     type: table
@@ -67,6 +69,7 @@
     height: 8
   - name: Top 10 Classifications
     label: Top 10 Classifications
+    title: Top 10 Classifications
     model: fujifilm_audit
     explore: data
     type: table
@@ -98,6 +101,7 @@
     height: 8
   - name: Input File Validation
     label: Input File Validation
+    title: Input File Validation
     model: fujifilm_audit
     explore: data
     type: table
@@ -129,6 +133,7 @@
     height: 5
   - name: Classification Depth
     label: Classification Depth
+    title: Classification Depth
     model: fujifilm_audit
     explore: data
     type: table

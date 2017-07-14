@@ -3,6 +3,7 @@
   elements:
   - name: Total Spend by Category
     label: Total Spend by Category
+    title: Total Spend by Category
     model: fujifilm_audit
     explore: data
     type: table
@@ -50,6 +51,7 @@
     height: 6
   - name: Total Spend by Supplier Grouping
     label: Total Spend by Supplier Grouping
+    title: Total Spend by Supplier Grouping
     model: fujifilm_audit
     explore: data
     type: table
@@ -96,6 +98,7 @@
     height: 6
   - name: Total Spend by Item Description
     label: Total Spend by Item Description
+    title: Total Spend by Item Description
     model: fujifilm_audit
     explore: data
     type: table
