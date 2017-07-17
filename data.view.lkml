@@ -3,7 +3,8 @@ view: data {
 
 
   dimension: classification {
-    view_label: "Classification"
+    view_label: "Taxonomies"
+
     label: " Classification"
     type: string
     sql:case
@@ -12,6 +13,8 @@ view: data {
         when ${TABLE}."category_level_3" is null and ${TABLE}."category_level_2" is null and ${TABLE}."category_level_1" is not null then ${TABLE}."category_level_1"
         else null
         end;;
+
+    drill_fields: [category_level_1,category_level_2,category_level_3,category_level_4]
   }
 
   dimension: account_asset_category {
@@ -40,33 +43,48 @@ view: data {
   }
 
   dimension: category_level_1 {
+    view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_1 ;;
     drill_fields: [category_level_2]
+    link: {
+      label: "Link to Category Explore"
+      url: "/explore/fujifilm_audit/data?qid=49g8lfIONvBW9INerjF7IS&f[data.category_level_1] = {{ value }}"
+    }
+    link: {
+      label: "Cool Dashboard"
+      url: "google.com"
+    }
   }
 
+
   dimension: category_level_2 {
+    view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_2 ;;
     drill_fields: [category_level_3]
   }
 
   dimension: category_level_3 {
+    view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_3 ;;
   }
 
   dimension: category_level_4 {
+    view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_4 ;;
   }
 
   dimension: category_level_5 {
+    view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_5 ;;
   }
 
   dimension: category_level_6 {
+    view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_6 ;;
   }
@@ -387,6 +405,7 @@ view: data {
   dimension: supplier_parent_name {
     type: string
     sql: ${TABLE}.supplier_parent_name ;;
+    drill_fields: [category,activity,category_level_1,category_level_2,category_level_3,category_level_4]
   }
 
   dimension_group: transaction {
