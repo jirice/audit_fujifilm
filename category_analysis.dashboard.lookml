@@ -61,6 +61,7 @@
     - data.po_count
     - data.invoice_count
     - data.total_spend
+    - data.invoice_spend
     sorts:
     - data.total_spend desc
     limit: 500
