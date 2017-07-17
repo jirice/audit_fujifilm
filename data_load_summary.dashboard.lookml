@@ -13,6 +13,7 @@
     - data.line_count
     - data.original_supplier_count
     - data.supplier_count
+    # - data.po_count
     fill_fields:
     - data.transaction_date_month
     sorts:
