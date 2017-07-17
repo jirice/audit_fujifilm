@@ -12,7 +12,7 @@
     - data.supplier_parent_count
     - data.total_spend
     fill_fields:
-  #  - data.transaction_date_month
+# - data.transaction_date_month
     sorts:
     - data.transaction_date_month
     limit: 500
