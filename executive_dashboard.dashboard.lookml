@@ -9,6 +9,7 @@
     type: single_value
     fields:
     - data.supplier_parent_count
+    # -data.supplier_count
     limit: 500
     column_limit: 50
     query_timezone: America/New_York
