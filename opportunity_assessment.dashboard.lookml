@@ -12,8 +12,9 @@
     - spend_by_supplier.total_spend_amount_tier
     - data.total_spend
     - data.supplier_parent_count
+    # - data.invoice_count
     fill_fields:
-   # - spend_by_supplier.total_spend_amount_tier
+    # - spend_by_supplier.total_spend_amount_tier
     sorts:
     - spend_by_supplier.total_spend_amount_tier
     limit: 100
