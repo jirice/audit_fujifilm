@@ -15,7 +15,7 @@
     - data.invoice_count
     - data.total_spend
     sorts:
-    - data.total_spend desc
+    - data.total_spend d
     limit: 500
     column_limit: 50
     total: true
