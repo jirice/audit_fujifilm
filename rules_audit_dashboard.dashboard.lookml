@@ -21,6 +21,7 @@
     - rules.rule_condition_5
     - rules.created_date
     - rules.updated_on
+    # - rules.updated_date
     sorts:
     - data.rule_id
     limit: 500
