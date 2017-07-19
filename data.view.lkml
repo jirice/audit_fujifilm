@@ -16,7 +16,11 @@ view: data {
 
     drill_fields: [category_level_1,category_level_2,category_level_3,category_level_4]
   }
-
+measure:lead_date
+{
+  type: average
+  sql: ${delivery_date}-${po_date_date} ;;
+}
   dimension: account_asset_category {
     type: string
     sql: ${TABLE}.account_asset_category ;;
@@ -49,7 +53,7 @@ view: data {
     drill_fields: [category_level_2]
     link: {
       label: "Link to Category Explore"
-      url: "/explore/fujifilm_audit/data?qid=49g8lfIONvBW9INerjF7IS&f[data.category_level_1] = {{ value }}"
+      url: "/explore/fujifilm_audit/data?fields=data.total_spend,data.invoice_count,data.supplier_parent_count,data.line_count,data.po_count,&f[data.category_level_1] = {{ value }}"
     }
     link: {
       label: "Cool Dashboard"
@@ -1662,7 +1666,7 @@ view: data {
         field: non_spend
         value: "-Y"
       }
-    }
+   }
 
     dimension: has_invoice_line_number_no_po_number {
       hidden: yes
