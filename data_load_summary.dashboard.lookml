@@ -10,9 +10,9 @@
     fields:
     - data.transaction_date_month
     - data.total_spend
-    - data.line_count
     - data.original_supplier_count
-    - data.supplier_count
+    - data.supplier_parent_count
+    - data.line_count
 
     fill_fields:
     - data.transaction_date_month
@@ -31,43 +31,18 @@
     conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    series_labels:
+      data.transaction_date_month: Date
+      data.supplier_parent_count: Normalized Suppliers
+      data.line_count: "#of Lines"
+      data.original_supplier_count: "#Original Suppliers"
+      data.total_spend: Spend
     listen: {}
     row: 0
     col: 0
     width: 11
     height: 9
-  - name: Top 10 Normalized Suppliers
-    label: Top 10 Normalized Suppliers
-    title: Top 10 Normalized Suppliers
-    model: fujifilm_audit
-    explore: data
-    type: table
-    fields:
-    - data.supplier_parent_name
-    - data.total_spend
-    - data.original_supplier_count
-    - data.supplier_count
-    - data.line_count
-    sorts:
-    - data.total_spend desc
-    limit: 10
-    column_limit: 50
-    show_view_names: true
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    listen: {}
-    row: 9
-    col: 0
-    width: 11
-    height: 8
+
   - name: Top 10 Classifications
     label: Top 10 Classifications
     title: Top 10 Classifications
@@ -78,7 +53,7 @@
     - data.category_level_3
     - data.total_spend
     - data.original_supplier_count
-    - data.supplier_count
+    - data.supplier_parent_count
     - data.line_count
     sorts:
     - data.total_spend desc
@@ -95,6 +70,51 @@
     conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    series_labels:
+      data.transaction_date_month: Date
+      data.supplier_parent_count: Normalized Suppliers
+      data.line_count: "#of Lines"
+      data.original_supplier_count: "#Original Suppliers"
+      data.total_spend: Spend
+    listen: {}
+    row: 9
+    col: 0
+    width: 11
+    height: 8
+
+  - name: Top 10 Normalized Suppliers
+    label: Top 10 Normalized Suppliers
+    title: Top 10 Normalized Suppliers
+    model: fujifilm_audit
+    explore: data
+    type: table
+    fields:
+    - data.supplier_parent_name
+    - data.total_spend
+    - data.original_supplier_count
+    - data.supplier_parent_count
+    - data.line_count
+    sorts:
+    - data.total_spend desc
+    limit: 10
+    column_limit: 50
+    show_view_names: true
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_labels:
+      data.transaction_date_month: Date
+      data.supplier_parent_count: Normalized Suppliers
+      data.line_count: "#of Lines"
+      data.original_supplier_count: "#Original Suppliers"
+      data.total_spend: Spend
     listen: {}
     row: 9
     col: 11
@@ -107,10 +127,11 @@
     explore: data
     type: table
     fields:
+    - data.spend_file_name
     - data.total_spend
     - data.line_count
     - data.original_supplier_count
-    - data.supplier_count
+    - data.supplier_parent_count
     - data.spend_file_name
     sorts:
     - data.total_spend desc
@@ -127,6 +148,13 @@
     conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
+    series_labels:
+     data.transaction_date_month: Date
+     data.supplier_parent_count: Normalized Suppliers
+     data.line_count: "#of Lines"
+     data.original_supplier_count: "#Original Suppliers"
+     data.total_spend: Spend
+     data.spend_file_name: File Name
     listen: {}
     row: 0
     col: 11
@@ -141,16 +169,16 @@
     fields:
     - data.Category_Classification_Depth
     - data.total_spend
-    - data.original_supplier_count
-    - data.supplier_count
+    - data.supplier_parent_count
+    - data.line_count
     sorts:
     - data.total_spend desc
     limit: 500
     column_limit: 50
     total: true
     dynamic_fields:
-    - table_calculation: of_total_spend
-      label: "% of Total Spend"
+    - table_calculation: percent_total_spend
+      label: Percen Total Spend
       expression: "${data.total_spend}/${data.total_spend:total}"
       value_format:
       value_format_name: percent_0
@@ -166,6 +194,13 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     listen: {}
+    series_labels:
+     data.transaction_date_month: Date
+     data.supplier_parent_count: Normalized Suppliers
+     data.line_count: "#of Lines"
+     data.original_supplier_count: "#Original Suppliers"
+     data.total_spend: Spend
+     percent_total_spend: "% Spend"
     row: 5
     col: 11
     width: 11
