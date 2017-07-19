@@ -3,13 +3,14 @@
   elements:
   - name: Spend by Classification
     title: Spend by Classification
-
+    label: Spend by Classification
     model: fujifilm_audit
     explore: data
     type: looker_bar
     fields:
     - data.category_level_1
     - data.total_spend
+#   - data.spend_amount
     sorts:
     - data.total_spend desc
     limit: 500
