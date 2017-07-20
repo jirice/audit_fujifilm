@@ -215,8 +215,9 @@
     hide_row_totals: false
     table_theme: editable
     limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
+    enable_conditional_formatting: true
+    conditional_formatting_ignored_fields: [data.total_spend_running_total, data.total_spend,
+      over_80, total]
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     stacking: ''
@@ -256,6 +257,10 @@
       data.total_spend_running_total: Cumulative spend
       data.total_spend: Spend
       spend_by_supplier.supplier_parent: Supplier
+    conditional_formatting: [{type: less than, value: '0.8', background_color: "#29763f",
+        font_color: !!null '', palette: {name: Red to Yellow to Green, colors: ["#F36254",
+            "#FCF758", "#4FBC89"]}, bold: false, italic: false, strikethrough: false}]
+
     row: 7
     col: 12
     width: 12
