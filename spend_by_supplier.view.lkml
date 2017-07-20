@@ -28,6 +28,7 @@ view: spend_by_supplier {
   dimension: supplier_parent_name {
     type: string
     sql: ${TABLE}.supplier_parent_name ;;
+    drill_fields: [supplier_name]
   }
 
   dimension: total_spend_amount {

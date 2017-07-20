@@ -16,6 +16,7 @@ view: data {
 
     drill_fields: [category_level_1,category_level_2,category_level_3,category_level_4]
   }
+
 measure:lead_date
 {
   type: average
@@ -53,12 +54,9 @@ measure:lead_date
     drill_fields: [category_level_2]
     link: {
       label: "Link to Category Explore"
-      url: "/explore/fujifilm_audit/data?fields=data.total_spend,data.invoice_count,data.supplier_parent_count,data.line_count,data.po_count,&f[data.category_level_1] = {{ value }}"
+      url: "/explore/fujifilm_audit/data?fields=data.category_level_1,data.supplier_parent_count,data.po_count,data.total_spend,&f[data.category_level_1]={{ value }}"
     }
-    link: {
-      label: "Cool Dashboard"
-      url: "google.com"
-    }
+
   }
 
 
@@ -409,7 +407,7 @@ measure:lead_date
   dimension: supplier_parent_name {
     type: string
     sql: ${TABLE}.supplier_parent_name ;;
-    drill_fields: [category,activity,category_level_1,category_level_2,category_level_3,category_level_4]
+    drill_fields: [supplier_name]
   }
 
   dimension_group: transaction {
