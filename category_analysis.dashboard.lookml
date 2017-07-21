@@ -12,7 +12,7 @@
     - data.supplier_parent_count
     - data.line_count
     - data.po_count
-    # - data.invoice_count
+    - data.sap_invoice_count
     - data.total_spend
 
     sorts:
@@ -43,7 +43,7 @@
       data.supplier_parent_count: "# Suppliers"
       data.line_count: "# Lines"
       data.po_count: "# POs"
-      data.invoice_count: "# Invoices"
+      data.sap_invoice_count: "# Invoices"
       percent_total_spend: "% Spend"
       data.total_spend: Spend
     row: 6
@@ -60,7 +60,7 @@
     - data.supplier_parent_name
     - data.line_count
     - data.po_count
-    # - data.invoice_count
+    - data.sap_invoice_count
     - data.total_spend
 
     sorts:
@@ -92,7 +92,7 @@
       data.supplier_parent_count: "# Suppliers"
       data.line_count: "# Lines"
       data.po_count: "# POs"
-      data.invoice_qty: "# Invoices"
+      data.sap_invoice_count: "# Invoices"
       percent_total_spend: "% Spend"
     row: 0
     col: 12

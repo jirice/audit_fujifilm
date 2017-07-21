@@ -339,6 +339,17 @@ measure:lead_date
     sql: ${TABLE}.sap_invoice_no ;;
   }
 
+  measure: sap_invoice_count {
+    view_label: "Invoice"
+    type: count_distinct
+    sql: ${sap_invoice_no} ;;
+    value_format_name: decimal_0
+    filters: {
+      field: non_spend
+      value: "-Y"
+    }
+  }
+
   dimension: sourcing_group_1 {
     type: string
     sql: ${TABLE}.sourcing_group_1 ;;
@@ -1700,7 +1711,7 @@ measure:lead_date
       view_label: "Invoice"
       type: sum
       sql: CASE
-                      WHEN ${po_number} = '' AND ${invoice_line_number} != '' THEN ${spend_amount}
+                      WHEN ${po_number} = '' AND ${sap_invoice_no} != '' THEN ${spend_amount}
                       ELSE 0
                      END ;;
       value_format_name: usd_0

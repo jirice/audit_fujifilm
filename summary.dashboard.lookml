@@ -54,7 +54,7 @@
     explore: data
     type: single_value
     fields:
-    - data.invoice_count
+    - data.sap_invoice_count
     limit: 500
     column_limit: 50
     query_timezone: America/New_York
