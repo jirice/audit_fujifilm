@@ -1022,28 +1022,28 @@ measure:lead_date
       sql: ${TABLE}.origin ;;
     }
 
-#     dimension: original_spend_amount {
-#       type: number
-#       sql: ${TABLE}."original_spend_amount" ;;
-#     }
-#
-#     dimension: payment_date {
-#       #dimension_group: payment_date {
-#       view_label: "Dates"
-#       label: "Payment"
-#       #type: time
-#       #datatype: date
-#       #timeframes: [date,
-#       #  month,
-#       #  month_num, fiscal_month_num,
-#       #  quarter, fiscal_quarter,
-#       #  quarter_of_year, fiscal_quarter_of_year,
-#       #  year, fiscal_year]
-#       #sql: ${TABLE}.payment_date ;;
-#       type: string
-#       sql: ${TABLE}.payment_date_str ;;
-#     }
-#
+    # dimension: original_spend_amount {
+    #   type: number
+    #   sql: ${TABLE}."original_spend_amount" ;;
+    # }
+
+    # dimension: payment_date {
+    #   #dimension_group: payment_date {
+    #   view_label: "Dates"
+    #   label: "Payment"
+    #   #type: time
+    #   #datatype: date
+    #   #timeframes: [date,
+    #   #  month,
+    #   #  month_num, fiscal_month_num,
+    #   #  quarter, fiscal_quarter,
+    #   #  quarter_of_year, fiscal_quarter_of_year,
+    #   #  year, fiscal_year]
+    #   #sql: ${TABLE}.payment_date ;;
+    #   type: string
+    #   sql: ${TABLE}.payment_date_str ;;
+    # }
+
     dimension: payment_description {
       view_label: "Invoice"
       type: string
@@ -1103,12 +1103,12 @@ measure:lead_date
       sql: ${TABLE}."po_item_description" ;;
     }
 
-#     dimension: po_line {
-#       view_label: "PO"
-#       label: "PO Line"
-#       type: string
-#       sql: ${TABLE}."po_line" ;;
-#     }
+    # dimension: po_line {
+    #   view_label: "PO"
+    #   label: "PO Line"
+    #   type: string
+    #   sql: ${TABLE}."po_line" ;;
+    # }
 
     dimension: po_line_description {
       view_label: "PO"
@@ -1117,12 +1117,12 @@ measure:lead_date
       sql: ${TABLE}."po_line_description" ;;
     }
 
-#     dimension: po_number {
-#       view_label: "PO"
-#       label: "PO Number"
-#       type: string
-#       sql: ${TABLE}."po_number" ;;
-#     }
+    # dimension: po_number {
+    #   view_label: "PO"
+    #   label: "PO Number"
+    #   type: string
+    #   sql: ${TABLE}."po_number" ;;
+    # }
 
     dimension: po_status {
       view_label: "PO"
@@ -1192,10 +1192,10 @@ measure:lead_date
       sql: ${TABLE}."roll_stat_r" ;;
     }
 
-#     dimension: rule_id {
-#       type: string
-#       sql: ${TABLE}.rule_id ;;
-#     }
+    # dimension: rule_id {
+    #   type: string
+    #   sql: ${TABLE}.rule_id ;;
+    # }
 #
 #     dimension: source {
 #       type: string

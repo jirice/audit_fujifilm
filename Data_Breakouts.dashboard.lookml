@@ -1,7 +1,7 @@
 - dashboard: data_breakouts
   layout: newspaper
   title: Data Breakouts
-  layout: tile
+  layout: newspaper
   tile_size: 100
 
   filters:
@@ -304,8 +304,8 @@
               name: Data Total Spend}]}]
       series_types: {}
 
-    - name: add_a_unique_name_1500448301
-      title: Untitled Visualization
+    - name: Account Asset Category
+      title: Account Asset Category
       model: fujifilm_audit
       explore: data
       type: looker_column
