@@ -13,6 +13,7 @@
     - data.line_count
     - data.po_count
     - data.sap_invoice_count
+#     - data.invoice_count
     - data.total_spend
 
     sorts:
