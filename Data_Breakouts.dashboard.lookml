@@ -8,6 +8,7 @@
     type: looker_column
     fields:
     - data.total_spend
+
     - data.transaction_date_year
     fill_fields:
     - data.transaction_date_year

@@ -342,6 +342,7 @@ measure:lead_date
   measure: sap_invoice_count {
     view_label: "Invoice"
     type: count_distinct
+    # sql: ${invoice_line_number} ;;
     sql: ${sap_invoice_no} ;;
     value_format_name: decimal_0
     filters: {
