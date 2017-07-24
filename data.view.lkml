@@ -14,7 +14,7 @@ view: data {
         else null
         end;;
 
-    drill_fields: [category_level_1,category_level_2,category_level_3,category_level_4]
+    drill_fields: [sourcing_group_1,sourcing_group_2,sourcing_group_3]
   }
 
 measure:lead_date
@@ -52,10 +52,6 @@ measure:lead_date
     type: string
     sql: ${TABLE}.category_level_1 ;;
     drill_fields: [category_level_2]
-    link: {
-      label: "Link to Category Explore"
-      url: "/explore/fujifilm_audit/data?fields=data.category_level_1,data.supplier_parent_count,data.po_count,data.total_spend,&f[data.category_level_1]={{ value }}"
-    }
 
   }
 
@@ -71,6 +67,7 @@ measure:lead_date
     view_label: "Taxonomies"
     type: string
     sql: ${TABLE}.category_level_3 ;;
+    drill_fields: [category_level_4]
   }
 
   dimension: category_level_4 {
@@ -436,6 +433,12 @@ measure:lead_date
     sql: ${TABLE}.transaction_date ;;
   }
 
+
+  measure: Timeframe {
+    type: string
+    sql:  CONCAT((CONCAT(TO_CHAR(min(${transaction_date_date}), 'Mon-YY'),' to ')),TO_CHAR(max(${transaction_date_date}), 'Mon-YY')) ;;
+
+  }
   dimension: vendor_catalog_ref {
     type: string
     sql: ${TABLE}.vendor_catalog_ref ;;
@@ -1432,6 +1435,7 @@ measure:lead_date
 
 
 
+
     filter: select_one_metric {
       hidden: yes
       type: string
@@ -1809,12 +1813,19 @@ measure:lead_date
 
     }
 
-    measure: total_spend_unfiltered {
-      label: "Total Spend - All Data"
-      type: number
-      sql: (SELECT SUM(b.spend_amount) FROM sr_fujifilm.data b) ;;
-      value_format_name: usd_0
-    }
+#     measure: total_spend_unfiltered {
+#       label: "Total Spend - All Data"
+#       type: number
+#       sql: (SELECT SUM(b.spend_amount) FROM sr_fujifilm.data b) ;;
+#       value_format_name: usd_0
+#     }
+  measure: total_spend_unfiltered {
+    label: "Total Spend - All Data"
+    type: sum
+    sql: ${spend_amount} ;;
+    value_format_name: usd_0
+  }
+
 
     measure: total_spend_running_total {
       type: running_total
