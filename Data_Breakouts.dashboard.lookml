@@ -94,13 +94,13 @@
     x_axis_datetime_label: ''
     y_axis_value_format: ''
     listen: {}
-    row: 0
-    col: 16
+    row: 7
+    col: 8
     width: 8
     height: 7
-  - name: "Data Breakouts #Lines"
-    label: "Data Breakouts #Lines"
-    title: "Data Breakouts #Lines"
+  - name: "Data Breakouts Lines"
+    label: "Data Breakouts Lines"
+    title: "Data Breakouts Lines"
     model: fujifilm_audit
     explore: data
     type: looker_column
@@ -143,10 +143,11 @@
     x_axis_datetime_label: ''
     y_axis_value_format: ''
     listen: {}
-    row: 7
-    col: 0
+    row: 0
+    col: 8
     width: 8
     height: 7
+
   - name: 'Data Breakouts # Pos'
     title: 'Data Breakouts # Pos'
     model: fujifilm_audit
@@ -191,10 +192,11 @@
     x_axis_datetime_label: ''
     y_axis_value_format: ''
     listen: {}
-    row: 7
-    col: 8
+    row: 0
+    col: 16
     width: 8
     height: 7
+
   - name: 'Data Breakouts # Invoices'
     title: 'Data Breakouts # Invoices'
     model: fujifilm_audit
@@ -239,8 +241,8 @@
     x_axis_datetime_label: ''
     y_axis_value_format: ''
     listen: {}
-    row: 0
-    col: 8
+    row: 7
+    col: 0
     width: 8
     height: 7
   # - name: Data Breakouts Spend - Pcard
