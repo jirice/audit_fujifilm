@@ -78,7 +78,7 @@
       data.total_spend: Spend
     listen: {}
     row: 9
-    col: 0
+    col: 11
     width: 11
     height: 8
 
@@ -117,7 +117,7 @@
       data.total_spend: Spend
     listen: {}
     row: 9
-    col: 11
+    col: 0
     width: 11
     height: 8
   - name: Input File Validation
