@@ -1,4 +1,4 @@
-- dashboard: Executive Dashboard
+- dashboard: Executive_Dashboard
   layout: newspaper
   elements:
   - name: Supplier Parent Count
