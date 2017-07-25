@@ -72,18 +72,21 @@ measure:lead_date
 
   dimension: category_level_4 {
     view_label: "Taxonomies"
+    hidden: yes
     type: string
     sql: ${TABLE}.category_level_4 ;;
   }
 
   dimension: category_level_5 {
     view_label: "Taxonomies"
+    hidden: yes
     type: string
     sql: ${TABLE}.category_level_5 ;;
   }
 
   dimension: category_level_6 {
     view_label: "Taxonomies"
+    hidden: yes
     type: string
     sql: ${TABLE}.category_level_6 ;;
   }
@@ -417,6 +420,10 @@ measure:lead_date
     type: string
     sql: ${TABLE}.supplier_parent_name ;;
     drill_fields: [supplier_name]
+    link: {
+        label: "Link to Supplier Name  Explore"
+        url: "/looks/2609?&f[data.supplier_parent] = {{ value }}"
+     }
   }
 
   dimension_group: transaction {
@@ -466,6 +473,7 @@ measure:lead_date
 
   measure: count {
     type: count
+    hidden: yes
     drill_fields: [detail*]
   }
 
@@ -486,12 +494,14 @@ measure:lead_date
 
     dimension: account_description {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."account_description" ;;
     }
 
     dimension: account_description_long {
       view_label: "Account"
+      hidden: yes
       type: string
       view_label: "Account"
       sql: ${TABLE}."account_description_long" ;;
@@ -499,6 +509,7 @@ measure:lead_date
 
     dimension: account_group_description {
       view_label: "Account"
+      hidden: yes
       type: string
       view_label: "Account"
       sql: ${TABLE}."account_group_description" ;;
@@ -506,6 +517,7 @@ measure:lead_date
 
     dimension: account_id {
       view_label: "Account"
+      hidden: yes
       type: string
       view_label: "Account"
       sql: ${TABLE}."account_id" ;;
@@ -513,6 +525,7 @@ measure:lead_date
 
     dimension: account_type_description {
       view_label: "Account"
+      hidden: yes
       type: string
       view_label: "Account"
       sql: ${TABLE}."account_type_description" ;;
@@ -521,6 +534,7 @@ measure:lead_date
     dimension: accounting_date {
       #dimension_group: accounting_date {
       view_label: "Dates"
+      hidden: yes
       label: "Accounting"
       #type: time
       #datatype: date
@@ -543,49 +557,58 @@ measure:lead_date
 
     dimension: address_1 {
       view_label: "Address"
+      hidden: yes
       type: string
       sql: ${TABLE}."address_1" ;;
     }
 
     dimension: afe_dtn_num {
+      hidden: yes
       type: string
       sql: ${TABLE}."afe_dtn_num" ;;
     }
 
     dimension: afe_dtn_num_description {
+      hidden: yes
       type: string
       sql: ${TABLE}."afe_dtn_num_description" ;;
     }
 
     dimension: amount {
       type: string
+      hidden: yes
       sql: ${TABLE}.amount ;;
     }
 
     dimension: ap_terms {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."ap_terms" ;;
     }
 
     dimension: approver_name {
       type: string
+      hidden: yes
       sql: ${TABLE}."approver_name" ;;
     }
 
     dimension: business_purpose_description {
       type: string
+      hidden: yes
       sql: ${TABLE}."business_purpose_description" ;;
     }
 
     dimension: business_unit {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."business_unit" ;;
     }
 
     dimension: buyer {
       type: string
+      hidden: yes
       sql: ${TABLE}.buyer ;;
     }
 
@@ -602,6 +625,7 @@ measure:lead_date
 
     dimension: category_description {
       view_label: "Taxonomies"
+      hidden: yes
       type: string
       sql: ${TABLE}."category_description" ;;
     }
@@ -702,39 +726,45 @@ measure:lead_date
 
     dimension: commodity_code {
       view_label: "Taxonomies"
+      hidden: yes
       type: string
       sql: ${TABLE}."commodity_code" ;;
     }
 
     dimension: company {
       type: string
+      hidden: yes
       sql: ${TABLE}.company ;;
     }
 
     dimension: company_code {
       type: string
+      hidden: yes
       sql: ${TABLE}."company_code" ;;
     }
 
-    dimension: compliant_raw {
-      hidden: yes
-      type: string
-      sql: ${TABLE}.compliant ;;
-    }
+    # dimension: compliant_raw {
+    #   hidden: yes
+    #   type: string
+    #   sql: ${TABLE}.compliant ;;
+    # }
 
     dimension: contract {
       type: string
+      hidden: yes
       sql: ${TABLE}.contract ;;
     }
 
     dimension: cost_center {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."cost_center" ;;
     }
 
     dimension: cost_center_description {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."cost_center_description" ;;
     }
@@ -747,6 +777,7 @@ measure:lead_date
 
     dimension: country_cleansed {
       view_label: "Address"
+      hidden: yes
       type: string
       sql: ${TABLE}."country_cleansed" ;;
     }
@@ -758,58 +789,68 @@ measure:lead_date
 #
     dimension: department_code {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."department_code" ;;
     }
 
     dimension: department_description {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."department_description" ;;
     }
 
     dimension: department_group_campus {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."department_group_campus" ;;
     }
 
     dimension: department_group_description {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."department_group_description" ;;
     }
 
     dimension: department_group_vp_area {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."department_group_vp_area" ;;
     }
 
     dimension: department_name {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."department_name" ;;
     }
 
     dimension: deptid {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}.deptid ;;
     }
 
     dimension: descr254_mixed {
       type: string
+      hidden: yes
       sql: ${TABLE}.descr254_mixed ;;
     }
 
     dimension: description {
       type: string
+      hidden: yes
       sql: ${TABLE}.description ;;
     }
 
     dimension: distrib_line_number {
       type: string
+      hidden: yes
       sql: ${TABLE}."distrib_line_number" ;;
     }
 
@@ -820,11 +861,13 @@ measure:lead_date
 
     dimension: district {
       type: string
+      hidden: yes
       sql: ${TABLE}.district ;;
     }
 
     dimension_group: due_date {
       view_label: "Dates"
+      hidden: yes
       label: "Due"
       type: time
       datatype: date
@@ -840,39 +883,46 @@ measure:lead_date
 
     dimension: emplid {
       type: string
+      hidden: yes
       sql: ${TABLE}.emplid ;;
     }
 
     dimension: expense_subaccount {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."expense_subaccount" ;;
     }
 
     dimension: expense_type {
       type: string
+      hidden: yes
       sql: ${TABLE}."expense_type" ;;
     }
 
     dimension: freight_amount {
       type: string
+      hidden: yes
       sql: ${TABLE}."freight_amount" ;;
     }
 
     dimension: fund {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}.fund ;;
     }
 
     dimension: fund_description {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."fund_description" ;;
     }
 
     dimension: fund_group_description {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."fund_group_description" ;;
     }
@@ -885,6 +935,7 @@ measure:lead_date
 
     dimension: gl_account_description {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."gl_account_description" ;;
     }
@@ -908,12 +959,14 @@ measure:lead_date
 #
     dimension: invoice_description {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."invoice_description" ;;
     }
 
     dimension: invoice_id {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."invoice_id" ;;
     }
@@ -937,22 +990,26 @@ measure:lead_date
 #
     dimension: item_number {
       type: string
+      hidden: yes
       sql: ${TABLE}."item_number" ;;
     }
 
     dimension: itm_id_vndr {
       type: string
+      hidden: yes
       sql: ${TABLE}.itm_id_vndr ;;
     }
 
     dimension: justification_code {
       type: string
+      hidden: yes
       sql: ${TABLE}."justification_code" ;;
     }
 
 
     dimension: location_latlong {
       type: location
+      hidden: yes
       sql_latitude:${TABLE}.latitude;;
       sql_longitude:${TABLE}.longitude;;
       drill_fields: [supplier_name_cleansed, category_level_1,category_level_2,category_level_3,category_level_4,category_level_5]
@@ -970,59 +1027,70 @@ measure:lead_date
 
     dimension: location {
       type: string
+      hidden: yes
       sql: ${TABLE}.location ;;
     }
 
     dimension: location_description {
       type: string
+      hidden: yes
       sql: ${TABLE}."location_description" ;;
     }
 
     dimension: mcc_code {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."mcc_code" ;;
     }
 
     dimension: mcc_description {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}."mcc_description" ;;
     }
 
     dimension: merchandise_amount {
       type: string
+      hidden: yes
       sql: ${TABLE}."merchandise_amount" ;;
     }
 
     dimension: merchant {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}.merchant ;;
     }
 
     dimension: mfg_id {
       type: string
+      hidden: yes
       sql: ${TABLE}."mfg_id" ;;
     }
 
     dimension: mfg_itm_id {
       type: string
+      hidden: yes
       sql: ${TABLE}."mfg_itm_id" ;;
     }
 
     dimension: misc_amount {
       type: string
+      hidden: yes
       sql: ${TABLE}."misc_amount" ;;
     }
 
     dimension: monetary_amount {
       type: number
+      hidden: yes
       sql: ${TABLE}."monetary_amount" ;;
     }
 
     dimension: name {
       type: string
+      hidden: yes
       sql: ${TABLE}.name ;;
     }
 
@@ -1034,6 +1102,7 @@ measure:lead_date
 #
     dimension: origin {
       type: string
+      hidden: yes
       sql: ${TABLE}.origin ;;
     }
 
@@ -1061,12 +1130,14 @@ measure:lead_date
 
     dimension: payment_description {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."payment_description" ;;
     }
 
     dimension: payment_id_ref {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."payment_id_ref" ;;
     }
@@ -1079,12 +1150,14 @@ measure:lead_date
 #
     dimension: pc_bus_unit {
       view_label: "BU/Dept"
+      hidden: yes
       type: string
       sql: ${TABLE}."pc_bus_unit" ;;
     }
 
     dimension: po_account_description {
       view_label: "Account"
+      hidden: yes
       label: "PO Account Description"
       type: string
       sql: ${TABLE}."po_account_description" ;;
@@ -1092,6 +1165,7 @@ measure:lead_date
 
     dimension_group: po_date {
       view_label: "Dates"
+      hidden: yes
       label: "PO"
       type: time
       datatype: date
@@ -1106,6 +1180,7 @@ measure:lead_date
 
     dimension: po_description {
       view_label: "PO"
+      hidden: yes
       label: "PO Description"
       type: string
       sql: ${TABLE}."po_description" ;;
@@ -1113,6 +1188,7 @@ measure:lead_date
 
     dimension: po_item_description {
       view_label: "PO"
+      hidden: yes
       label: "PO Item Description"
       type: string
       sql: ${TABLE}."po_item_description" ;;
@@ -1141,6 +1217,7 @@ measure:lead_date
 
     dimension: po_status {
       view_label: "PO"
+      hidden: yes
       label: "PO Status"
       type: string
       sql: ${TABLE}."po_status" ;;
@@ -1149,6 +1226,7 @@ measure:lead_date
     dimension: post_date {
       #dimension_group: post_date {
       view_label: "Dates"
+      hidden: yes
       label: "Post"
       #type: time
       #datatype: date
@@ -1165,6 +1243,7 @@ measure:lead_date
 
     dimension: postal_code {
       view_label: "Address"
+      hidden: yes
       type: zipcode
       sql: ${TABLE}."postal_code" ;;
     }
@@ -1178,32 +1257,38 @@ measure:lead_date
 
     dimension: project {
       view_label: "Account"
+      hidden: yes
       type: string
       sql: ${TABLE}.project ;;
     }
 
     dimension: qty_vchr {
       type: string
+      hidden: yes
       sql: ${TABLE}.qty_vchr ;;
     }
 
     dimension: quantity {
       type: string
+      hidden: yes
       sql: ${TABLE}.quantity ;;
     }
 
     dimension: quantity_invoiced {
       type: string
+      hidden: yes
       sql: ${TABLE}."quantity_invoiced" ;;
     }
 
     dimension: reg_test {
       type: string
+      hidden: yes
       sql: ${TABLE}.reg_test ;;
     }
 
     dimension: roll_stat_r {
       type: string
+      hidden: yes
       sql: ${TABLE}."roll_stat_r" ;;
     }
 
@@ -1271,6 +1356,7 @@ measure:lead_date
 
     dimension: spend_type {
       type: string
+      hidden: yes
       sql: ${TABLE}."spend_type" ;;
     }
 #
@@ -1332,6 +1418,7 @@ measure:lead_date
 
     dimension: supplier_terms {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}."supplier_terms" ;;
     }
@@ -1350,7 +1437,7 @@ measure:lead_date
         quarter_of_year, fiscal_quarter_of_year,
         year, fiscal_year]
       sql: ${TABLE}.transaction_date ;;
-      drill_fields: [transaction_date_month]
+      drill_fields: [transaction_date_month,transaction_date_quarter]
     }
 
     dimension: transaction_reference_number {
@@ -1361,68 +1448,81 @@ measure:lead_date
 
     dimension: transaction_type {
       view_label: "PO"
+      hidden: yes
       type: string
       sql: ${TABLE}."transaction_type" ;;
     }
 
     dimension: unit_of_measure {
       type: string
+      hidden: yes
       sql: ${TABLE}."unit_of_measure" ;;
     }
 
     dimension: unit_price {
       type: string
+      hidden: yes
       sql: ${TABLE}.unit_price ;;
     }
 
     dimension: ut_category_code {
       type: string
+      hidden: yes
       sql: ${TABLE}."ut_category_code" ;;
     }
 
     dimension: vendor_id {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}."vendor_id" ;;
     }
 
     dimension: vendor_item_id {
       type: string
+      hidden: yes
+      hidden: yes
       sql: ${TABLE}."vendor_item_id" ;;
     }
 
     dimension: vendor_name {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}.vendor_name ;;
     }
 
     dimension: vendor_number {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}."vendor_number" ;;
     }
 
     dimension: voucher_id {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."voucher_id" ;;
     }
 
     dimension: voucher_line_description {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."voucher_line_description" ;;
     }
 
     dimension: voucher_line_number {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."voucher_line_number" ;;
     }
 
     dimension: voucher_type_description {
       view_label: "Invoice"
+      hidden: yes
       type: string
       sql: ${TABLE}."voucher_type_description" ;;
     }
@@ -1469,7 +1569,7 @@ measure:lead_date
         , "AFE DTE Description"
         , "Approver"
         , "Buyer Name"
-        , "Compliance"
+        # , "Compliance"
         , "Cost Center"
         , "Data Source"
         , "Department"
@@ -1503,7 +1603,7 @@ measure:lead_date
           WHEN {% parameter select_one_dimension %} = 'AFE DTE Description' THEN ${afe_dtn_num_description}
           WHEN {% parameter select_one_dimension %} = 'Approver' THEN ${approver_name}
           WHEN {% parameter select_one_dimension %} = 'Buyer Name' THEN ${buyer}
-          WHEN {% parameter select_one_dimension %} = 'Compliance' THEN ${compliance}
+
           WHEN {% parameter select_one_dimension %} = 'Cost Center' THEN ${cost_center_description}
           WHEN {% parameter select_one_dimension %} = 'Data Source' THEN ${data_source}
           WHEN {% parameter select_one_dimension %} = 'Department' THEN ${department_name}
@@ -1545,16 +1645,17 @@ measure:lead_date
 
 
 
-    dimension: compliance {
-      type: string
-      sql: CASE
-          WHEN ${compliant_raw} = 'Y' THEN 'Compliant'
-          ELSE 'Non-Compliant'
-         END ;;
-    }
+    # dimension: compliance {
+    #   type: string
+    #   sql: CASE
+    #       WHEN ${compliant_raw} = 'Y' THEN 'Compliant'
+    #       ELSE 'Non-Compliant'
+    #     END ;;
+    # }
 
     dimension: pcard_indicator {
       type: number
+      hidden: yes
       sql: CASE
                       WHEN ${TABLE}.transaction_type = 'PCARD' THEN 1
                       ELSE 0
@@ -1563,6 +1664,7 @@ measure:lead_date
 
     measure: nonElectonicOrderType  {
       type:  sum
+      hidden: yes
       sql: CASE WHEN ${TABLE}.transaction_type  !=''
         THEN 1 ELSE 0 END;;
       drill_fields: [data_source]
@@ -1570,6 +1672,7 @@ measure:lead_date
 
     measure: ElectronicOrderType {
       type:  sum
+      hidden: yes
       sql: CASE WHEN ${TABLE}.transaction_type  =''
         THEN 1 ELSE 0 END;;
       drill_fields: [transaction_type]
@@ -1577,6 +1680,7 @@ measure:lead_date
 
     measure:  pcard_spend {
       type:sum
+      hidden: yes
       sql: ${pcard_indicator} ;;
       value_format_name: usd_0
 
@@ -1714,6 +1818,7 @@ measure:lead_date
 
     measure: invoice_spend {
       view_label: "Invoice"
+      hidden: yes
       type: sum
       sql: CASE
                       WHEN ${po_number} = '' AND ${sap_invoice_no} != '' THEN ${spend_amount}
@@ -1732,6 +1837,7 @@ measure:lead_date
 
     measure: supplier_count {
       view_label: "Supplier"
+      hidden: no
       type: count_distinct
       sql: ${supplier_name_cleansed} ;;
       value_format_name: decimal_0
@@ -1750,6 +1856,7 @@ measure:lead_date
 
     measure: original_supplier_count {
       view_label: "Supplier"
+      hidden: no
       type: count_distinct
       sql: ${TABLE}."supplier_name" ;;
       filters: {
@@ -1795,6 +1902,7 @@ measure:lead_date
 
     measure: percent_spend_change_vs_last_month {
       type: number
+      hidden: yes
       sql:  CASE
                             WHEN ${total_spend_last_month} is NULL THEN 0
                             ELSE (${total_spend_this_month} - ${total_spend_last_month})/${total_spend_last_month})
@@ -1828,18 +1936,18 @@ measure:lead_date
 
 
     measure: total_spend_running_total {
-      type: running_total
+    type: running_total
       sql: ${total_spend} ;;
       value_format_name: usd
     }
 
 
 
-    measure: total_spend_by_compliance{
-      type: sum
-      sql: ${TABLE}.compliance_amount ;;
-      value_format_name: usd_0
-    }
+    # measure: total_spend_by_compliance{
+    #   type: sum
+    #   sql: ${TABLE}.compliance_amount ;;
+    #   value_format_name: usd_0
+    # }
 
 
 
