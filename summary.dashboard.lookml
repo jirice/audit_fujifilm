@@ -771,3 +771,155 @@
     col: 7
     width: 7
     height: 7
+  filters:
+  - name: Cat Lvl 2
+    title: Cat Lvl 2
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_2
+    listens_to_filters:
+    - Cat Lvl 1
+  - name: Cat Lvl 1
+    title: Cat Lvl 1
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_1
+    listens_to_filters: []
+  - name: Cat Lvl 3
+    title: Cat Lvl 3
+    type: field_filter
+    default_value:
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_3
+    listens_to_filters:
+    - Cat Lvl 2
+    - Cat Lvl 1
+  - name: Cat Lvl 5
+    title: Cat Lvl 5
+    type: field_filter
+    default_value:
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_5
+    listens_to_filters:
+    - Cat Lvl 2
+    - Cat Lvl 1
+    - Cat Lvl 3
+    - Cat Lvl 4
+  - name: Cat Lvl 4
+    title: Cat Lvl 4
+    type: field_filter
+    default_value:
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_4
+    listens_to_filters:
+    - Cat Lvl 2
+    - Cat Lvl 1
+    - Cat Lvl 3
+  - name: Cat Lvl 6
+    title: Cat Lvl 6
+    type: field_filter
+    default_value:
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_6
+    listens_to_filters:
+    - Cat Lvl 2
+    - Cat Lvl 1
+    - Cat Lvl 3
+    - Cat Lvl 5
+    - Cat Lvl 4
+  - name: Data Source
+    title: Data Source
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.data_source
+    listens_to_filters: []
+  - name: Transaction Date
+    title: Transaction Date
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_date
+    listens_to_filters: []
+  - name: Transaction Calendar Year
+    title: Transaction Calendar Year
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_year
+    listens_to_filters: []
+  - name: Transaction Calendar Quarter
+    title: Transaction Calendar Quarter
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_quarter_of_year
+    listens_to_filters: []
+  - name: Transaction Calendar Month
+    title: Transaction Calendar Month
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_month_num
+    listens_to_filters: []
+  - name: Transaction Fiscal Quarter
+    title: Transaction Fiscal Quarter
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_fiscal_quarter_of_year
+    listens_to_filters: []
+  - name: Transaction Fiscal Year
+    title: Transaction Fiscal Year
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_fiscal_year
+    listens_to_filters: []
+  - name: Transaction Fiscal Month
+    title: Transaction Fiscal Month
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.transaction_date_fiscal_month_num
+    listens_to_filters: []
+  - name: Spend Type
+    title: Spend Type
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.select_spend_metric
+    listens_to_filters: []
+  - name: Category_level_1
+    title: Category_level_1
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.category_level_1
+    listens_to_filters: []
+  - name: Category
+    title: Category
+    type: field_filter
+    default_value: ''
+    model: fujifilm_audit
+    explore: data
+    field: data.category
+    listens_to_filters: []
