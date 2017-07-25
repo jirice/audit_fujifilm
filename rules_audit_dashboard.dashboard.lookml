@@ -2,7 +2,7 @@
   layout: newspaper
   elements:
   - name: Rules Audit Dashboard Upper
-    label: Rules Audit Dashboard Upper
+    title : Rules Audit Dashboard Upper
     model: fujifilm_audit
     explore: data
     type: table
