@@ -14,13 +14,13 @@ view: data {
         else null
         end;;
 
-    drill_fields: [sourcing_group_1,sourcing_group_2,sourcing_group_3]
+
   }
 
 measure:lead_date
 {
   type: average
-  sql: ${delivery_date}-${po_date_date} ;;
+  sql: ${delivery_date_date}-${po_date_date} ;;
 }
   dimension: account_asset_category {
     type: string
@@ -126,7 +126,26 @@ measure:lead_date
     sql: ${TABLE}.data_source ;;
   }
 
-  dimension_group: delivery {
+  measure: spend_AP {
+    view_label: "Spend-AP"
+    type: sum
+    sql: CASE
+                      WHEN ${TABLE}.data_source = 'AP'  THEN ${TABLE}.spend_amount
+                      ELSE null
+                     END ;;
+    value_format_name: usd_0
+    }
+  measure: spend_PO {
+    view_label: "Spend-PO"
+    type: sum
+    sql: CASE
+                      WHEN ${TABLE}.data_source = 'PO'  THEN ${TABLE}.spend_amount
+                      ELSE null
+                     END ;;
+     value_format_name: usd_0
+    }
+
+  dimension_group: delivery_date {
     type: time
     timeframes: [
       raw,
@@ -160,19 +179,22 @@ measure:lead_date
     sql: ${TABLE}.invoice_amount ;;
   }
 
-  dimension_group: invoice {
+  dimension_group: invoice_date {
     type: time
-    timeframes: [
-      raw,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    convert_tz: no
-    sql: ${TABLE}.invoice_date ;;
-  }
+    view_label: "Dates"
+      label: "Invoice"
+      datatype: date
+      timeframes: [date,
+       month,
+       month_num, fiscal_month_num,
+       quarter, fiscal_quarter,
+       quarter_of_year, fiscal_quarter_of_year,
+       year, fiscal_year]
+
+      sql: ${TABLE}.invoice_date ;;
+
+    }
+
 
   dimension: invoice_line_number {
     type: string
@@ -254,18 +276,31 @@ measure:lead_date
     sql: ${TABLE}.order_quantity ;;
   }
 
-  dimension: original_spend_amount {
-    type: string
+  measure: original_spend_amount {
+    type: sum
     sql: ${TABLE}.original_spend_amount ;;
+    value_format_name: usd_0
   }
+
+
 
   dimension: part_number {
     type: string
     sql: ${TABLE}.part_number ;;
   }
 
-  dimension: payment_date {
-    type: string
+  dimension_group: payment_date {
+    type: time
+    view_label: "Dates"
+    label: "Payment"
+    datatype: date
+    timeframes: [date,
+      month,
+      month_num, fiscal_month_num,
+      quarter, fiscal_quarter,
+      quarter_of_year, fiscal_quarter_of_year,
+      year, fiscal_year]
+
     sql: ${TABLE}.payment_date ;;
   }
 
@@ -279,12 +314,12 @@ measure:lead_date
     sql: ${TABLE}.plant ;;
   }
 
-  dimension: po_amount {
-    type: number
+  measure: po_amount {
+    type: sum
     sql: ${TABLE}.po_amount ;;
   }
 
-  dimension_group: po {
+  dimension_group: po_date {
     type: time
     timeframes: [
       raw,
@@ -292,8 +327,14 @@ measure:lead_date
       week,
       month,
       quarter,
-      year
-    ]
+      year,
+      month_num,
+      fiscal_month_num,
+      fiscal_quarter,
+      quarter_of_year,
+      fiscal_quarter_of_year,
+       fiscal_year
+      ]
     convert_tz: no
     sql: ${TABLE}.po_date ;;
   }
@@ -345,10 +386,6 @@ measure:lead_date
     # sql: ${invoice_line_number} ;;
     sql: ${sap_invoice_no} ;;
     value_format_name: decimal_0
-    filters: {
-      field: non_spend
-      value: "-Y"
-    }
   }
 
   dimension: sourcing_group_1 {
@@ -422,11 +459,12 @@ measure:lead_date
     drill_fields: [supplier_name]
     link: {
         label: "Link to Supplier Name  Explore"
-        url: "/looks/2680?&f[data.supplier_parent_name]={{ value }}"
+        url: "/looks/2828?&f[data.supplier_parent_name]={{ value }}"
      }
   }
 
-  dimension_group: transaction {
+  dimension_group: transaction_date {
+    datatype: date
     type: time
     timeframes: [
       raw,
@@ -434,11 +472,20 @@ measure:lead_date
       week,
       month,
       quarter,
-      year
+      year,
+      month_num,
+      fiscal_month_num,
+      fiscal_quarter,
+      quarter_of_year,
+      fiscal_quarter_of_year,
+      fiscal_year
     ]
     convert_tz: no
     sql: ${TABLE}.transaction_date ;;
+    drill_fields: [transaction_date_month,transaction_date_quarter]
   }
+
+
 
 
   measure: Timeframe {
@@ -531,26 +578,25 @@ measure:lead_date
       sql: ${TABLE}."account_type_description" ;;
     }
 
-    dimension: accounting_date {
-      #dimension_group: accounting_date {
+      dimension_group: accounting_date {
       view_label: "Dates"
       hidden: yes
       label: "Accounting"
-      #type: time
-      #datatype: date
-      #timeframes: [date,
-      #  month,
-      #  month_num, fiscal_month_num,
-      #  quarter, fiscal_quarter,
-      #  quarter_of_year, fiscal_quarter_of_year,
-      #  year, fiscal_year]
-      #sql: ${TABLE}.accounting_date ;;
-      type: string
-      sql: ${TABLE}.accounting_date_str ;;
+      type: time
+      datatype: date
+      timeframes: [date,
+       month,
+       month_num, fiscal_month_num,
+       quarter, fiscal_quarter,
+       quarter_of_year, fiscal_quarter_of_year,
+       year, fiscal_year]
+      sql: ${TABLE}.accounting_date ;;
+      type: time
     }
 
     dimension: activity {
       type: string
+      hidden: yes
       sql: ${TABLE}.activity ;;
       drill_fields: [supplier_name_cleansed, category]
     }
@@ -586,6 +632,7 @@ measure:lead_date
       type: string
       sql: ${TABLE}."ap_terms" ;;
     }
+
 
     dimension: approver_name {
       type: string
@@ -761,7 +808,6 @@ measure:lead_date
       type: string
       sql: ${TABLE}."cost_center" ;;
     }
-
     dimension: cost_center_description {
       view_label: "Account"
       hidden: yes
@@ -856,6 +902,7 @@ measure:lead_date
 
     dimension: distribution_line_qty {
       type: string
+      hidden: yes
       sql: ${TABLE}."distribution_line_qty" ;;
     }
 
@@ -940,23 +987,6 @@ measure:lead_date
       sql: ${TABLE}."gl_account_description" ;;
     }
 
-#     dimension: invoice_date {
-#       #dimension_group: invoice_date {
-#       view_label: "Dates"
-#       label: "Invoice"
-#       #type: time
-#       #datatype: date
-#       #timeframes: [date,
-#       #  month,
-#       #  month_num, fiscal_month_num,
-#       #  quarter, fiscal_quarter,
-#       #  quarter_of_year, fiscal_quarter_of_year,
-#       #  year, fiscal_year]
-#       #sql: ${TABLE}.invoice_date ;;
-#       type: string
-#       sql: ${TABLE}.invoice_date_str ;;
-#     }
-#
     dimension: invoice_description {
       view_label: "Invoice"
       hidden: yes
@@ -1106,27 +1136,9 @@ measure:lead_date
       sql: ${TABLE}.origin ;;
     }
 
-    # dimension: original_spend_amount {
-    #   type: number
-    #   sql: ${TABLE}."original_spend_amount" ;;
-    # }
 
-    # dimension: payment_date {
-    #   #dimension_group: payment_date {
-    #   view_label: "Dates"
-    #   label: "Payment"
-    #   #type: time
-    #   #datatype: date
-    #   #timeframes: [date,
-    #   #  month,
-    #   #  month_num, fiscal_month_num,
-    #   #  quarter, fiscal_quarter,
-    #   #  quarter_of_year, fiscal_quarter_of_year,
-    #   #  year, fiscal_year]
-    #   #sql: ${TABLE}.payment_date ;;
-    #   type: string
-    #   sql: ${TABLE}.payment_date_str ;;
-    # }
+
+
 
     dimension: payment_description {
       view_label: "Invoice"
@@ -1163,20 +1175,20 @@ measure:lead_date
       sql: ${TABLE}."po_account_description" ;;
     }
 
-    dimension_group: po_date {
-      view_label: "Dates"
-      hidden: yes
-      label: "PO"
-      type: time
-      datatype: date
-      timeframes: [date,
-        month,
-        month_num, fiscal_month_num,
-        quarter, fiscal_quarter,
-        quarter_of_year, fiscal_quarter_of_year,
-        year, fiscal_year]
-      sql: ${TABLE}.po_date ;;
-    }
+#     dimension_group: po_date{
+#       view_label: "Dates"
+#       hidden: yes
+#       label: "PO"
+#       type: time
+#       datatype: date
+#       timeframes: [date,
+#         month,
+#         month_num, fiscal_month_num,
+#         quarter, fiscal_quarter,
+#         quarter_of_year, fiscal_quarter_of_year,
+#         year, fiscal_year]
+#       sql: ${TABLE}.po_date ;;
+#     }
 
     dimension: po_description {
       view_label: "PO"
@@ -1203,6 +1215,7 @@ measure:lead_date
 
     dimension: po_line_description {
       view_label: "PO"
+      hidden: yes
       label: "PO Line Description"
       type: string
       sql: ${TABLE}."po_line_description" ;;
@@ -1250,6 +1263,7 @@ measure:lead_date
 
     dimension: price_po {
       view_label: "PO"
+      hidden: yes
       label: "PO Price"
       type: string
       sql: ${TABLE}."price_po" ;;
@@ -1368,6 +1382,7 @@ measure:lead_date
 
     dimension: supplier_class {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}."supplier_class" ;;
     }
@@ -1399,6 +1414,7 @@ measure:lead_date
 #
     dimension: supplier_number {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}."supplier_number" ;;
     }
@@ -1412,6 +1428,7 @@ measure:lead_date
 
     dimension: supplier_site {
       view_label: "Supplier"
+      hidden: yes
       type: string
       sql: ${TABLE}."supplier_site" ;;
     }
@@ -1425,23 +1442,24 @@ measure:lead_date
 
 
 
-    dimension_group: transaction_date {
-      view_label: "Dates"
-      label: "Transaction"
-      type: time
-      datatype: date
-      timeframes: [date,
-        month,
-        month_num, fiscal_month_num,
-        quarter, fiscal_quarter,
-        quarter_of_year, fiscal_quarter_of_year,
-        year, fiscal_year]
-      sql: ${TABLE}.transaction_date ;;
-      drill_fields: [transaction_date_month,transaction_date_quarter]
-    }
+#     dimension_group: transaction_date {
+#       view_label: "Dates"
+#       label: "Transaction"
+#       type: time
+#       datatype: date
+#       timeframes: [date,
+#         month,
+#         month_num, fiscal_month_num,
+#         quarter, fiscal_quarter,
+#         quarter_of_year, fiscal_quarter_of_year,
+#         year, fiscal_year]
+#       sql: ${TABLE}.transaction_date ;;
+#       drill_fields: [transaction_date_month,transaction_date_quarter]
+#     }
 
     dimension: transaction_reference_number {
       view_label: "PO"
+      hidden: yes
       type: string
       sql: ${TABLE}."transaction_reference_number" ;;
     }
@@ -1628,10 +1646,6 @@ measure:lead_date
       type: count_distinct
       view_label: "PO"
       sql: ${po_number} ;;
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
     }
 
     dimension: has_po_number {
@@ -1761,10 +1775,7 @@ measure:lead_date
 
     measure: line_count {
       type: count
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
+
     }
 
     measure: invoice_count_unfiltered {
@@ -1780,10 +1791,6 @@ measure:lead_date
       type: count_distinct
       sql: ${invoice_line_number} ;;
       value_format_name: decimal_0
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
    }
 
     dimension: has_invoice_line_number_no_po_number {
@@ -1810,10 +1817,7 @@ measure:lead_date
         field: has_invoice_line_number_no_po_number
         value: "yes"
       }
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
+
     }
 
     measure: invoice_spend {
@@ -1841,10 +1845,6 @@ measure:lead_date
       type: count_distinct
       sql: ${supplier_name_cleansed} ;;
       value_format_name: decimal_0
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
     }
 
     measure: original_supplier_count_unfiltered {
@@ -1859,10 +1859,6 @@ measure:lead_date
       hidden: no
       type: count_distinct
       sql: ${TABLE}."supplier_name" ;;
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
     }
 
     measure:  supplier_parent_count_unfiltered {
@@ -1876,10 +1872,6 @@ measure:lead_date
       view_label: "Supplier"
       type:  count_distinct
       sql:  ${supplier_parent_name} ;;
-      filters: {
-        field: non_spend
-        value: "-Y"
-      }
     }
 
     measure: total_spend_this_month {
@@ -1902,7 +1894,7 @@ measure:lead_date
 
     measure: percent_spend_change_vs_last_month {
       type: number
-      hidden: yes
+      hidden: no
       sql:  CASE
                             WHEN ${total_spend_last_month} is NULL THEN 0
                             ELSE (${total_spend_this_month} - ${total_spend_last_month})/${total_spend_last_month})
@@ -1921,12 +1913,7 @@ measure:lead_date
 
     }
 
-#     measure: total_spend_unfiltered {
-#       label: "Total Spend - All Data"
-#       type: number
-#       sql: (SELECT SUM(b.spend_amount) FROM sr_fujifilm.data b) ;;
-#       value_format_name: usd_0
-#     }
+
   measure: total_spend_unfiltered {
     label: "Total Spend - All Data"
     type: sum
@@ -1941,26 +1928,6 @@ measure:lead_date
       value_format_name: usd
     }
 
-
-
-    # measure: total_spend_by_compliance{
-    #   type: sum
-    #   sql: ${TABLE}.compliance_amount ;;
-    #   value_format_name: usd_0
-    # }
-
-
-
-#     measure: count {
-#       hidden: yes
-#       type: count
-#       drill_fields: [detail*]
-#     }
-#
-#     # ----- Sets of fields for drilling ------
-#     set: detail {
-#       fields: [vendor_name, approver_name, supplier_parent_name, supplier_name, name, buyer_name, department_name, spend_file_name]
-#     }
 
     filter: select_spend_metric {
       hidden: yes
@@ -1986,7 +1953,6 @@ measure:lead_date
       sql: CASE WHEN  LEN(data."category_code") = 2  THEN 'Level 1'
              WHEN LEN(data."category_code") = 5  THEN 'Level 2'
              WHEN LEN(data."category_code") = 8  THEN 'Level 3'
-             WHEN LEN(data."category_code") = 11  THEN 'Level 4'
              WHEN data."category_code" = ''  THEN 'Unclassified'
         ELSE  data."category_code"  END ;;
 

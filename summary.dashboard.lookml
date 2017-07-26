@@ -54,7 +54,6 @@
     explore: data
     type: single_value
     fields:
-#     -data.invoice_count
     - data.sap_invoice_count
     limit: 500
     column_limit: 50
@@ -374,7 +373,7 @@
     type: looker_bar
     fields:
     - data.total_spend
-    - spend_by_supplier.supplier_parent_name
+    - data.supplier_parent_name
     sorts:
     - data.total_spend desc
     limit: 10
@@ -541,76 +540,9 @@
     series_colors:
       data.total_spend: "#27c2cc"
       data.supplier_parent_count: "#86d462"
-
-    row: 9
-    col: 15
-    width: 9
-    height: 8
-  - name: Buyer
-    title: Buyer
-    model: fujifilm_audit
-    explore: data
-    type: looker_pie
-    fields: [data.buyer_name, data.total_spend]
-    sorts: [data.total_spend desc]
-    limit: 500
-    column_limit: 50
-    value_labels: legend
-    label_type: labPer
-    map_plot_mode: points
-    heatmap_gridlines: false
-    heatmap_gridlines_empty: false
-    heatmap_opacity: 0.5
-    show_region_field: true
-    draw_map_labels_above_data: true
-    map_tile_provider: positron
-    map_position: fit_data
-    map_scale_indicator: 'off'
-    map_pannable: true
-    map_zoomable: true
-    map_marker_type: circle
-    map_marker_icon_name: default
-    map_marker_radius_mode: proportional_value
-    map_marker_units: meters
-    map_marker_proportional_scale_type: linear
-    map_marker_color_mode: fixed
-    show_view_names: true
-    show_legend: true
-    quantize_map_value_colors: false
-    reverse_map_value_colors: false
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-
     row: 9
     col: 7
-    width: 8
+    width: 9
     height: 8
   - name: Spend by Cost Center Table
     title: Spend by Cost Center Table
@@ -693,84 +625,11 @@
       D2700: "#cbdcc9"
     hidden_fields:
     listen: {}
-    row: 17
-    col: 0
-    width: 7
-    height: 7
-  - name: Spend by Country
-    title: Spend by Country
-    model: fujifilm_audit
-    explore: data
-    type: table
-    fields: [data.total_spend, data.country]
-    sorts: [data.total_spend desc]
-    limit: 500
-    column_limit: 50
-    show_view_names: true
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
-    value_labels: legend
-    label_type: labPer
-    map_plot_mode: points
-    heatmap_gridlines: false
-    heatmap_gridlines_empty: false
-    heatmap_opacity: 0.5
-    show_region_field: true
-    draw_map_labels_above_data: true
-    map_tile_provider: positron
-    map_position: fit_data
-    map_scale_indicator: 'off'
-    map_pannable: true
-    map_zoomable: true
-    map_marker_type: circle
-    map_marker_icon_name: default
-    map_marker_radius_mode: proportional_value
-    map_marker_units: meters
-    map_marker_proportional_scale_type: linear
-    map_marker_color_mode: fixed
-    show_legend: true
-    quantize_map_value_colors: false
-    reverse_map_value_colors: false
-    custom_color_enabled: false
-    custom_color: forestgreen
-    show_single_value_title: true
-    show_comparison: false
-    comparison_type: value
-    comparison_reverse_colors: false
-    show_comparison_label: true
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    row: 17
-    col: 7
-    width: 7
-    height: 7
+    row: 9
+    col: 16
+    width: 8
+    height: 8
+
   - name: Average Lead Time By Supplier
     title: Average Lead Time by Supplier
     model: fujifilm_audit
@@ -778,7 +637,7 @@
     type: looker_bar
     fields:
     - data.lead_date
-    - spend_by_supplier.supplier_parent_name
+    - data.supplier_parent_name
     - data.total_spend
     sorts:
     - data.total_spend desc
@@ -822,7 +681,7 @@
     - data.total_spend
     listen: {}
     row: 17
-    col: 14
+    col: 0
     width: 10
     height: 7
 
