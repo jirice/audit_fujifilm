@@ -426,17 +426,19 @@
     title: Spend by Cost Center
     model: fujifilm_audit
     explore: data
-    type: table
-    fields: [data.total_spend, data.corrected_cost_center_number]
-    sorts: [data.total_spend desc]
+    type: looker_pie
+    fields: [data.total_spend, data.cost_center_number]
+    sorts: [data.cost_center_number asec]
     limit: 1000
     column_limit: 50
     dynamic_fields:
-    - table_calculation: calculation_1
-      label: Calculation 1
+    - table_calculation: total
+      label: "%total"
       expression: "${data.total_spend}/sum(${data.total_spend})"
       value_format:
       value_format_name: percent_2
+    value_labels: legend
+    label_type: labPer
     show_view_names: true
     show_row_numbers: true
     truncate_column_names: false
@@ -448,8 +450,6 @@
     conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    value_labels: legend
-    label_type: labPer
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -474,20 +474,10 @@
     ordering: none
     show_null_labels: false
     series_types: {}
-    colors: ["#62bad4", "#a9c574", "#929292", "#9fdee0", "#1f3e5a", "#90c8ae", "#92818d",
-      "#c5c6a6", "#ebd2dd", "#cee0a0", "#928fb4", "#9fc190"]
-    series_colors:
-      ? ''
-      : "#cb62d4"
-      D1100: "#3b4722"
-      D1320: "#c890ab"
-      D1410: "#81928f"
-      D1505: "#b4b08f"
-      D1620: "#9098c1"
-      D1630: "#e5b1a0"
-      D2550: "#2fd4ca"
-      D2700: "#cbdcc9"
-    hidden_fields:
+    colors: 'palette: Looker Classic'
+    series_colors: {}
+    hidden_fields: [total]
+
 
     row: 9
     col: 0
@@ -550,9 +540,10 @@
       data.total_spend: "#27c2cc"
       data.supplier_parent_count: "#86d462"
     row: 9
-    col: 7
-    width: 9
+    col: 14
+    width: 10
     height: 8
+
   - name: Spend by Cost Center Table
     title: Spend by Cost Center Table
     model: fujifilm_audit
@@ -635,9 +626,10 @@
     hidden_fields:
     listen: {}
     row: 9
-    col: 16
-    width: 8
+    col: 7
+    width: 7
     height: 8
+
 
   - name: Average Lead Time By Supplier
     title: Average Lead Time by Supplier
