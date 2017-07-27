@@ -636,7 +636,7 @@
     explore: data
     type: looker_bar
     fields:
-    - data.lead_date
+    - data.lead_time
     - data.supplier_parent_name
     - data.total_spend
     sorts:
