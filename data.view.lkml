@@ -104,7 +104,7 @@ measure:lead_time
 
   dimension: cost_center_number {
     type: string
-    sql: ${TABLE}.cost_center_number ;;
+    sql: ${corrected_cost_center_number} ;;
   }
 
 dimension: corrected_cost_center_number {
@@ -117,6 +117,13 @@ dimension: corrected_cost_center_number {
        end;;
 
 }
+
+  # measure: precent_spend
+  # { view_label: "Percent"
+  #   type: percent_of_total
+  #   sql: ${total_spend};;
+  #   value_format: "#0.0\%"
+  # }
 
   dimension: country {
     type: string
@@ -1104,10 +1111,10 @@ dimension: corrected_cost_center_number {
       #datatype: date
       #timeframes: [date,
       #  month,
-      #  month_num, fiscal_month_num,
-      #  quarter, fiscal_quarter,
-      #  quarter_of_year, fiscal_quarter_of_year,
-      #  year, fiscal_year]
+      #  month_num,
+      #  quarter, ,
+      #  quarter_of_year,
+      #  year]
       #sql: ${TABLE}.post_date ;;
       type: string
       sql: ${TABLE}.post_date_str ;;

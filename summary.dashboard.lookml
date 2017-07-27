@@ -426,19 +426,28 @@
     title: Spend by Cost Center
     model: fujifilm_audit
     explore: data
-    type: looker_pie
-    fields: [data.total_spend, data.cost_center_number]
-    filters:
-      data.cost_center_number: "-EMPTY"
-    sorts: [total desc]
+    type: table
+    fields: [data.total_spend, data.corrected_cost_center_number]
+    sorts: [data.total_spend desc]
     limit: 1000
     column_limit: 50
     dynamic_fields:
-    - table_calculation: total
-      label: "%total"
+    - table_calculation: calculation_1
+      label: Calculation 1
       expression: "${data.total_spend}/sum(${data.total_spend})"
       value_format:
       value_format_name: percent_2
+    show_view_names: true
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
     value_labels: legend
     label_type: labPer
     stacking: ''
@@ -447,8 +456,6 @@
     legend_position: center
     x_axis_gridlines: false
     y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
     y_axis_combined: true
     show_y_axis_labels: true
     show_y_axis_ticks: true
@@ -466,19 +473,21 @@
     totals_color: "#808080"
     ordering: none
     show_null_labels: false
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
     series_types: {}
-    colors: 'palette: Looker Classic'
-    series_colors: {}
-    hidden_fields: [total]
+    colors: ["#62bad4", "#a9c574", "#929292", "#9fdee0", "#1f3e5a", "#90c8ae", "#92818d",
+      "#c5c6a6", "#ebd2dd", "#cee0a0", "#928fb4", "#9fc190"]
+    series_colors:
+      ? ''
+      : "#cb62d4"
+      D1100: "#3b4722"
+      D1320: "#c890ab"
+      D1410: "#81928f"
+      D1505: "#b4b08f"
+      D1620: "#9098c1"
+      D1630: "#e5b1a0"
+      D2550: "#2fd4ca"
+      D2700: "#cbdcc9"
+    hidden_fields:
 
     row: 9
     col: 0
@@ -553,7 +562,7 @@
     - data.total_spend
     - data.cost_center_number
     sorts:
-    - data.cost_center_number desc
+    - data.cost_center_number asec
     limit: 1000
     column_limit: 50
     dynamic_fields:
