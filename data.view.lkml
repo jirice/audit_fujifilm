@@ -19,7 +19,7 @@ view: data {
 
 measure:lead_time
 {
-  view_label: "Lead Time"
+
   type: average
   sql: ${delivery_date_date}-${po_date_date} ;;
 }
@@ -146,7 +146,7 @@ dimension: corrected_cost_center_number {
   }
 
   measure: spend_AP {
-    view_label: "Spend-AP"
+
     type: sum
     sql: CASE
                       WHEN ${TABLE}.data_source = 'AP'  THEN ${TABLE}.spend_amount
@@ -155,7 +155,7 @@ dimension: corrected_cost_center_number {
     value_format_name: usd_0
     }
   measure: spend_PO {
-    view_label: "Spend-PO"
+
     type: sum
     sql: CASE
                       WHEN ${TABLE}.data_source = 'PO'  THEN ${TABLE}.spend_amount
@@ -309,19 +309,10 @@ dimension: corrected_cost_center_number {
     sql: ${TABLE}.part_number ;;
   }
 
-  dimension_group: payment_date {
-    type: time
+  dimension: payment_date {
+    type: string
     view_label: "Dates"
     label: "Payment"
-    datatype: date
-    timeframes: [date,
-      month,
-      month_num,
-      quarter,
-      quarter_of_year,
-      year
-      ]
-
     sql: ${TABLE}.payment_date ;;
   }
 
