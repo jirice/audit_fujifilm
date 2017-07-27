@@ -1,4 +1,4 @@
-- dashboard: Rules Audit dashboard
+- dashboard: Rules Audit
   layout: newspaper
   elements:
   - name: Rule Audit
