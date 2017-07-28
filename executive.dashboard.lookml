@@ -56,7 +56,7 @@
     explore: data
     type: looker_bar
     fields:
-    - data.classification
+    - data.category_level_1
     - data.total_spend
     limit: 10
     column_limit: 50
@@ -86,7 +86,7 @@
     series_types: {}
     x_axis_label: ''
     y_axis_labels:
-    - Spend
+    - Total Spend
     y_axis_value_format: "$#,##0,, \\M"
     label_value_format: "$#,##0.00,, \\M"
     listen: {}
@@ -135,7 +135,7 @@
     show_silhouette: false
     totals_color: "#808080"
     series_types: {}
-    single_value_title: Spend
+    single_value_title: Filtered Spend
     value_format: "$#,##0"
     listen: {}
     row: 0
@@ -253,7 +253,7 @@
     explore: data
     type: looker_pie
     fields:
-    - data.classification
+    - data.category_level_1
     - data.total_spend
     limit: 10
     column_limit: 50
@@ -502,10 +502,10 @@
     series_types: {}
     label_value_format: "$#,##0.00,, \\M"
     y_axis_labels:
-    - Spend
+    - Total Spend
     y_axis_value_format: "$#,##0, \\K"
     y_axes:
-    - label: Spend
+    - label: Total Spend
       maxValue:
       minValue:
       orientation: bottom
