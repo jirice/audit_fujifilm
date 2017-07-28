@@ -1,4 +1,4 @@
-- dashboard: summary dashboard
+- dashboard: summary
   layout: newspaper
   elements:
   - name: Po Count - Single Value
