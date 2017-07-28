@@ -427,35 +427,31 @@
     model: fujifilm_audit
     explore: data
     type: looker_pie
-    fields: [data.total_spend, data.cost_center_number]
-    sorts: [data.cost_center_number asec]
-    limit: 1000
+    fields: [data.corrected_cost_center_number, data.total_spend]
+    sorts: [data.total_spend desc]
+    limit: 500
     column_limit: 50
     dynamic_fields:
-    - table_calculation: total
-      label: "%total"
+    - table_calculation: calculation_2
+      label: "%Total"
       expression: "${data.total_spend}/sum(${data.total_spend})"
       value_format:
       value_format_name: percent_2
-    value_labels: legend
-    label_type: labPer
-    show_view_names: true
-    show_row_numbers: true
-    truncate_column_names: false
-    hide_totals: false
-    hide_row_totals: false
-    table_theme: editable
-    limit_displayed_rows: false
-    enable_conditional_formatting: false
-    conditional_formatting_ignored_fields: []
-    conditional_formatting_include_totals: false
-    conditional_formatting_include_nulls: false
+    - table_calculation: calculation_1
+      label: Calculation 1
+      expression: if(${data.corrected_cost_center_number}="",no,yes)
+      value_format:
+      value_format_name:
+    value_labels: labels
+    label_type: lab
     stacking: ''
     show_value_labels: false
     label_density: 25
     legend_position: center
     x_axis_gridlines: false
     y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
     y_axis_combined: true
     show_y_axis_labels: true
     show_y_axis_ticks: true
@@ -465,19 +461,53 @@
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_scale_mode: linear
-    show_null_points: true
-    point_style: circle
-    interpolation: linear
+    ordering: none
+    show_null_labels: false
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    ordering: none
-    show_null_labels: false
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: false
+    comparison_type: value
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    map_plot_mode: points
+    heatmap_gridlines: false
+    heatmap_gridlines_empty: false
+    heatmap_opacity: 0.5
+    show_region_field: true
+    draw_map_labels_above_data: true
+    map_tile_provider: positron
+    map_position: fit_data
+    map_scale_indicator: 'off'
+    map_pannable: true
+    map_zoomable: true
+    map_marker_type: circle
+    map_marker_icon_name: default
+    map_marker_radius_mode: proportional_value
+    map_marker_units: meters
+    map_marker_proportional_scale_type: linear
+    map_marker_color_mode: fixed
+    show_legend: true
+    quantize_map_value_colors: false
+    reverse_map_value_colors: false
+    show_null_points: true
+    point_style: circle
+    interpolation: linear
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
     series_types: {}
-    colors: 'palette: Looker Classic'
-    series_colors: {}
-    hidden_fields: [total]
-
+    hidden_points_if_no: [calculation_1]
+    hidden_fields: [data.total_spend]
 
     row: 9
     col: 0
@@ -549,16 +579,18 @@
     model: fujifilm_audit
     explore: data
     type: table
-    fields:
-    - data.total_spend
-    - data.cost_center_number
-    sorts:
-    - data.cost_center_number asec
-    limit: 1000
+    fields: [data.corrected_cost_center_number, data.total_spend]
+    sorts: [data.total_spend desc]
+    limit: 500
     column_limit: 50
     dynamic_fields:
-    - table_calculation: total
-      label: "%total"
+    - table_calculation: calculation_1
+      label: Calculation 1
+      expression: if(${data.corrected_cost_center_number}="",no,yes)
+      value_format:
+      value_format_name:
+    - table_calculation: calculation_2
+      label: "%Total"
       expression: "${data.total_spend}/sum(${data.total_spend})"
       value_format:
       value_format_name: percent_2
@@ -573,8 +605,6 @@
     conditional_formatting_ignored_fields: []
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    value_labels: legend
-    label_type: labPer
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -590,41 +620,13 @@
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_scale_mode: linear
-    show_null_points: true
-    point_style: circle
-    interpolation: linear
+    ordering: none
+    show_null_labels: false
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    ordering: none
-    show_null_labels: false
     series_types: {}
-    colors:
-    - "#62bad4"
-    - "#a9c574"
-    - "#929292"
-    - "#9fdee0"
-    - "#1f3e5a"
-    - "#90c8ae"
-    - "#92818d"
-    - "#c5c6a6"
-    - "#ebd2dd"
-    - "#cee0a0"
-    - "#928fb4"
-    - "#9fc190"
-    series_colors:
-      ? ''
-      : "#cb62d4"
-      D1100: "#3b4722"
-      D1320: "#c890ab"
-      D1410: "#81928f"
-      D1505: "#b4b08f"
-      D1620: "#9098c1"
-      D1630: "#e5b1a0"
-      D2550: "#2fd4ca"
-      D2700: "#cbdcc9"
-    hidden_fields:
-    listen: {}
+    hidden_points_if_no: [calculation_1]
     row: 9
     col: 7
     width: 7

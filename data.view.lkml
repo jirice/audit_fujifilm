@@ -11,6 +11,7 @@ view: data {
         when ${TABLE}."category_level_3" is not null then ${TABLE}."category_level_3"
         when ${TABLE}."category_level_3" is null and ${TABLE}."category_level_2" is not null then ${TABLE}."category_level_2"
         when ${TABLE}."category_level_3" is null and ${TABLE}."category_level_2" is null and ${TABLE}."category_level_1" is not null then ${TABLE}."category_level_1"
+
         else null
         end;;
 
@@ -105,6 +106,7 @@ measure:lead_time
   dimension: cost_center_number {
     type: string
     sql: ${corrected_cost_center_number} ;;
+
   }
 
 dimension: corrected_cost_center_number {
@@ -116,9 +118,20 @@ dimension: corrected_cost_center_number {
       else   null
        end;;
 
-}
+  }
 
-  # measure: precent_spend
+
+# dimension:new_cost_center_spend{
+#   type: number
+#   sql: ${total_spend}-${total_spend} where ${corrected_cost_center_number}='-EMPTY' ;;
+# }
+
+# dimension: corrected_cost_center_number_spend {
+#   type:
+#   sql: ${total_spend}-${new_cost_center_spend} ;;
+# }
+
+  # measure: percent_spend
   # { view_label: "Percent"
   #   type: percent_of_total
   #   sql: ${total_spend};;
