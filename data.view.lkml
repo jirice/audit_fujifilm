@@ -480,7 +480,7 @@ dimension: corrected_cost_center_number {
     drill_fields: [supplier_name]
     link: {
         label: "Link to Supplier Name  Explore"
-        url: "/looks/2962?&f[data.supplier_parent_name]={{ value }}"
+        url: "/looks/3057?&f[data.supplier_parent_name]={{ value }}"
      }
   }
 
