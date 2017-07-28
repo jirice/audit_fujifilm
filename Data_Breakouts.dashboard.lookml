@@ -148,8 +148,8 @@
     width: 6
     height: 6
 
-  - name: 'Data Breakouts # Pos'
-    title: 'Data Breakouts # Pos'
+  - name: 'Data Breakouts # POs'
+    title: 'Data Breakouts # POs'
     model: fujifilm_audit
     explore: data
     type: looker_column
