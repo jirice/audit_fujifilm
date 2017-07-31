@@ -111,6 +111,7 @@ measure:lead_time
 
 dimension: corrected_cost_center_number {
  type: string
+label: "Cost Center"
     sql:case
         when ${TABLE}."cost_center_number" is not  null AND ${TABLE}."project_number" LIKE 'P%' then 'Capital Project'
        when ${TABLE}."cost_center_number" is not  null AND ${TABLE}."project_number" LIKE'E%' then 'Client Project'
